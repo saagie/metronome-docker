@@ -18,8 +18,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     systemctl disable mesos-master.service && \
     systemctl disable mesos-slave.service && \
     cd $BUILD_DIR && \
-    git clone https://github.com/dcos/metronome.git && \
+    git clone https://github.com/saagie/metronome.git && \
     cd metronome && \
+    git checkout dockerExtend && \	
     sbt -Dsbt.log.format=false universal:packageBin && \
     mv $(find target/universal -name 'metronome-*-SNAPSHOT.zip' | sort | tail -1) $APP_DIR/ && \
     cd $APP_DIR && \
